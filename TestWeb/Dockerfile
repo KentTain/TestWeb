@@ -1,6 +1,6 @@
 FROM microsoft/aspnetcore:latest
-ARG source
-WORKDIR /publish
+ARG source=.
+WORKDIR /app
 EXPOSE 5000
-COPY /. /publish
+COPY $source /app
 ENTRYPOINT ["dotnet", "TestWeb.dll"]
