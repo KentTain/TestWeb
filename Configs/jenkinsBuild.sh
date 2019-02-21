@@ -7,6 +7,10 @@ csprojDir="TestWeb/TestWeb.csproj";
 containerName="testweb";
 #制定run的端口
 port=5000;
+#本地Nuget服务
+localNuget="http://192.168.2.112:1000/nuget/"; #Nuget Server in Windows
+#localNuget="http://192.168.56.99:8081/"; #BaGet Server in Linux
+
 #项目发布的版本
 newVersion=1.0.$BUILD_NUMBER;
 #上一个版本
@@ -26,6 +30,9 @@ archivesDir=/usr/sftpdata/web/archives;
 echo "--kcloudy:发布dotnetcore项目--"${solutionName};
 #清空文件夹
 sudo rm -rf ${webDir}/*;
+
+#还原Nuget包
+#dotnet restore ${csprojDir} -s ${localNuget};
 #发布网站到webDir
 dotnet publish $JENKINS_HOME/workspace/$JOB_NAME/${csprojDir} -c Release -o ${webDir} /p:Version=${newVersion};
 
