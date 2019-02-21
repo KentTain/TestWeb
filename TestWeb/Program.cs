@@ -14,6 +14,9 @@ namespace TestWeb
     {
         public static void Main(string[] args)
         {
+
+            Console.WriteLine(TestLocalNuget.TestClass.Message);
+
             CreateWebHostBuilder(args).Build().Run();
         }
 
