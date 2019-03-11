@@ -31,22 +31,17 @@ namespace TestWeb
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-            
+
+            var config = Configuration.GetSection("AppSettings");
+            Console.WriteLine("SystemType: " + config["SystemType"]);
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-            else
-            {
-                app.UseExceptionHandler("/Error");
-                //app.UseHsts();
-            }
+            app.UseDeveloperExceptionPage();
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();

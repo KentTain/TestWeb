@@ -7,5 +7,9 @@ WORKDIR /app
 COPY $source /app
 #设置Docker容器对外暴露的端口
 EXPOSE 5000
+
+ARG env=Dev
+ENV ASPNETCORE_ENVIRONMENT=$env,env="--environment="$env
 #容器中使用 ["dotnet","系统启动的dll"] 来运行应用程序
 ENTRYPOINT ["dotnet", "TestWeb.dll"]
+CMD ["$env"]
