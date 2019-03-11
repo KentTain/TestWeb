@@ -10,8 +10,8 @@ ARG env=Dev
 ENV ASPNETCORE_ENVIRONMENT=$env
 ENV env="--environment="$env
 
-COPY build.sh /usr/local/bin/
-RUN chmod +x /usr/local/bin/build.sh
+#COPY build.sh /usr/local/bin/
+#RUN chmod +x /usr/local/bin/build.sh
 
-ENTRYPOINT ["build.sh"]
+ENTRYPOINT ["dotnet", "TestWeb.dll"]
 CMD ["$env"]
