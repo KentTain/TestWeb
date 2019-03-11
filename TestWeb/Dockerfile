@@ -11,7 +11,7 @@ ENV ASPNETCORE_ENVIRONMENT=$env
 ENV env="--environment="$env
 
 COPY build.sh /usr/local/bin/
-RUN chmod +R /usr/local/bin/build.sh
+RUN chmod +x /usr/local/bin/build.sh
 
 ENTRYPOINT ["build.sh"]
 CMD ["$env"]
