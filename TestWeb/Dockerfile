@@ -1,7 +1,6 @@
 FROM microsoft/dotnet:2.1-aspnetcore-runtime
 ARG source=.
 WORKDIR /app
-
 COPY $source /app
 
 EXPOSE 5000
